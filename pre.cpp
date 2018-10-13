@@ -21,11 +21,15 @@ using namespace std;
         }
 
         //sort the vector
-
-        
         std::vector<int>::iterator it;
         std::sort(teamScores.begin(), teamScores.end(), desc); 
-         cout<<"\n*****Printing Data*******\n";
+
+        //take the score of kth team
+        cout<<"\nKth team score:"<<teamScores[rank-1];
+
+
+        //testing 
+        cout<<"\n*****Printing Data*******\n";
         for(int i=0;i<teamScores.size();i++){
             cout<<"\t"<< teamScores[i];
         }
