@@ -1,8 +1,11 @@
 #include<iostream>
 #include<vector>
+#include<algorithm>
 using namespace std;
 
-int main(){
+    bool desc(int i,int j) { return (i>j); }
+    
+    int main(){
     int tcCount, teamCount, rank, temp;
     cin >> tcCount;
     while(tcCount){
@@ -17,7 +20,11 @@ int main(){
             teamCount--;   
         }
 
-    
+        //sort the vector
+
+        
+        std::vector<int>::iterator it;
+        std::sort(teamScores.begin(), teamScores.end(), desc); 
          cout<<"\n*****Printing Data*******\n";
         for(int i=0;i<teamScores.size();i++){
             cout<<"\t"<< teamScores[i];
