@@ -3,15 +3,16 @@
 #include<algorithm>
 using namespace std;
 
-    bool desc(int i,int j) { return (i>j); }
+//Comparator function for sort
+bool desc(int i,int j) { return (i>j); }
     
-    int main(){
+int main(){
     int tcCount, teamCount, rank, temp;
     cin >> tcCount;
     while(tcCount){
         
         cin>> teamCount >> rank;
-        std::vector<int> teamScores;
+       
 
         //take input and store in vector
         while(teamCount){
@@ -25,9 +26,16 @@ using namespace std;
         std::sort(teamScores.begin(), teamScores.end(), desc); 
 
         //take the score of kth team
-        cout<<"\nKth team score:"<<teamScores[rank-1];
+        int kScore;
+        kScore = teamScores[rank-1];
+        cout<<"\nKth team score:"<<kScore;
 
-
+        //Find number of teams with score >= kScore
+        //cout<<endl<<"out"<< getRank(rank-1, kScore, teamCount );
+        while(teamScores[rank] == kScore){
+            rank++;
+        }
+        cout<<endl<<"rank is "<<rank;
         //testing 
         cout<<"\n*****Printing Data*******\n";
         for(int i=0;i<teamScores.size();i++){
@@ -36,4 +44,5 @@ using namespace std;
 
         tcCount--;
     }
+
 }
