@@ -26,29 +26,6 @@ int main(){
     //sort semi primeset
     std::sort(semiPrimeSet.begin(),semiPrimeSet.end());
 
-
-    //print primeSet
-   /*     cout<<"primeSet :";
-    for(int i=0;i<primeSet.size();i++){
-        cout<<primeSet[i]<<" ";
-    }
-    cout<<"\nprimeSet size::"<<primeSet.size()<<endl;
-     
-    cout<<"\n Semi primeSet :";
-    for(int i=0;i<semiPrimeSet.size();i++){
-        cout<<semiPrimeSet[i]<<" ";
-    }
-    cout<<"\nsemi primeSet size::"<<semiPrimeSet.size()<<endl;
-*/
-    //sort semi-prime set
-
-    // cout<<"\nSorted Semi primeSet :";
-    // for(int i=0;i<semiPrimeSet.size();i++){
-    //     cout<<semiPrimeSet[i]<<" ";
-    // }
-    // cout<<"\nSorted semi primeSet size::"<<semiPrimeSet.size()<<endl;
-
-    //serch the given number in semi prime set as sum of 2 numbers
     int testCount, num, index;
     cin >> testCount;
     while(testCount > 0)
@@ -58,13 +35,9 @@ int main(){
         //search elemnt less than num in semi primeSet
         findItr = std::find(semiPrimeSet.begin(),semiPrimeSet.end(),num);
 
-        // if(finditr!= semiPrimeSet.end()){
-        //     cout<< "elemnt found at index "<<index
-        // }
         std::vector<int>::iterator low,up;
         if(findItr!= semiPrimeSet.end()){
             index = findItr -  semiPrimeSet.begin();
-            // cout<< "elemnt found at index "<<index << "element "<<semiPrimeSet[index];
         }
         else{
             low=std::lower_bound (semiPrimeSet.begin(), semiPrimeSet.end(), num);
@@ -72,15 +45,12 @@ int main(){
             if(index == -1){
                 cout<<"NO"<<endl;
                 goto end;
-            }
-            // cout<<"\nLess than"<<*low;
-            // cout<<"found at index"<<index;      
+            }   
         }
 
         //check if num is present as sum of 2 numbers
         firstItr = semiPrimeSet.begin();
         lastItr = semiPrimeSet.begin()+index;
-        // cout<<"\nElement present between "<<*firstItr<<"--"<<*lastItr;
 
         while(*firstItr <= *lastItr){
             if((*firstItr + *lastItr) > num )
