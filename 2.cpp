@@ -63,7 +63,7 @@ int main(){
             }
 
         }
-        cout<<"NO";
+        cout<<"NO"<<endl;
 
         end: testCount--;
     }
