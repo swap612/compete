@@ -23,9 +23,12 @@ int main(){
             
         }
     }
+    //sort semi primeset
+    std::sort(semiPrimeSet.begin(),semiPrimeSet.end());
+
 
     //print primeSet
-        cout<<"primeSet :";
+   /*     cout<<"primeSet :";
     for(int i=0;i<primeSet.size();i++){
         cout<<primeSet[i]<<" ";
     }
@@ -36,27 +39,63 @@ int main(){
         cout<<semiPrimeSet[i]<<" ";
     }
     cout<<"\nsemi primeSet size::"<<semiPrimeSet.size()<<endl;
-
+*/
     //sort semi-prime set
-    std::sort(semiPrimeSet.begin(),semiPrimeSet.end());
 
-    cout<<"\nSorted Semi primeSet :";
-    for(int i=0;i<semiPrimeSet.size();i++){
-        cout<<semiPrimeSet[i]<<" ";
-    }
-    cout<<"\nSorted semi primeSet size::"<<semiPrimeSet.size()<<endl;
+    // cout<<"\nSorted Semi primeSet :";
+    // for(int i=0;i<semiPrimeSet.size();i++){
+    //     cout<<semiPrimeSet[i]<<" ";
+    // }
+    // cout<<"\nSorted semi primeSet size::"<<semiPrimeSet.size()<<endl;
 
     //serch the given number in semi prime set as sum of 2 numbers
-    int testCount, num;
+    int testCount, num, index;
     cin >> testCount;
     while(testCount > 0)
     {
         cin >> num;
 
-        //searc
-        
+        //search elemnt less than num in semi primeSet
+        findItr = std::find(semiPrimeSet.begin(),semiPrimeSet.end(),num);
 
-        testCount--;
+        // if(finditr!= semiPrimeSet.end()){
+        //     cout<< "elemnt found at index "<<index
+        // }
+        std::vector<int>::iterator low,up;
+        if(findItr!= semiPrimeSet.end()){
+            index = findItr -  semiPrimeSet.begin();
+            // cout<< "elemnt found at index "<<index << "element "<<semiPrimeSet[index];
+        }
+        else{
+            low=std::lower_bound (semiPrimeSet.begin(), semiPrimeSet.end(), num);
+            index = (low - semiPrimeSet.begin() -1);
+            if(index == -1){
+                cout<<"NO"<<endl;
+                goto end;
+            }
+            // cout<<"\nLess than"<<*low;
+            // cout<<"found at index"<<index;      
+        }
+
+        //check if num is present as sum of 2 numbers
+        firstItr = semiPrimeSet.begin();
+        lastItr = semiPrimeSet.begin()+index;
+        // cout<<"\nElement present between "<<*firstItr<<"--"<<*lastItr;
+
+        while(*firstItr <= *lastItr){
+            if((*firstItr + *lastItr) > num )
+                lastItr--;
+            else if ((*firstItr + *lastItr) < num )
+                firstItr++;
+            else{    
+                cout<<"YES"<<endl;
+                goto end;
+            }
+
+        }
+        cout<<"NO";
+
+        end: testCount--;
     }
 
 }
