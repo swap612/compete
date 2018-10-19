@@ -20,33 +20,36 @@ int main(){
             temp--;   
         }
         
-        
+        //number of time decreasing elemennt occurs
         decrCount=0;
         int i=0, flag =1;
         while(i < CardCount -1){
+            //if in decr order increment
             if(CardNum[i] > CardNum[i+1])
                 decrCount++;
                      
             i++;
                
         }
-        cout<<"\ndecrCount: "<<decrCount;
+        // cout<<"\ndecrCount: "<<decrCount;
 
+        //if first is smaller than last element, we cannot shuffle the cards 
         if(CardNum[0] < CardNum[CardCount-1])
         {
-            //if first is smaller than last element, we cannot shuffle the cards 
             flag = 0;
         }
 
+        //CASE1: increasing order, decr count 0 and flag will be 0.
         if( (decrCount == 0) && (!flag))
             cout<<"YES"<<endl;
+        //CASE2: decr count can be less than 2 and flag =1
         else if( (decrCount <2) && flag)
             cout<<"YES"<<endl;
+        //CASE3: Remaining cases
         else
             cout<<"NO"<<endl; 
-                            
-                
-        end: tcCount--;
+                             
+        tcCount--;
     }
     
 }
